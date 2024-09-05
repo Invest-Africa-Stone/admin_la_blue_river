@@ -88,6 +88,11 @@ export const DashboardWrapper:FC<Props> = ({
                 link: NavigationPathsEnum.DASHBOARD
             },
             {
+                icon: IconNameEnum.project,
+                label: 'Projets',
+                link: NavigationPathsEnum.PROJECTS
+            },
+            {
                 icon: IconNameEnum.collabs,
                 label: 'Collaborateurs',
                 link: NavigationPathsEnum.COLLABS

@@ -1,5 +1,6 @@
 import {  
     faBell,
+    faBus,
     faChartSimple,
     faCheck,
     faCircleExclamation,
@@ -21,5 +22,6 @@ export const IconNameEnum = {
     warning: faWarning,
     error: faCircleExclamation,
     check: faCheck,
-    sentMessage: faPaperPlane
+    sentMessage: faPaperPlane,
+    project: faBus
 }

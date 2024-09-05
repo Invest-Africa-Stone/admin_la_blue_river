@@ -8,7 +8,8 @@ import {
   Message,
   Account,
   Collaborators,
-  Settings
+  Settings,
+  Projets
 } from '@pages';
   
 export const Navigations: React.FC = () => {
@@ -33,6 +34,10 @@ export const Navigations: React.FC = () => {
     {
       path: NavigationPathsEnum.COLLABS,
       element: <Collaborators />,
+    },
+    {
+      path: NavigationPathsEnum.PROJECTS,
+      element: <Projets />,
     },
     {
       path: NavigationPathsEnum.SETTINGS,
