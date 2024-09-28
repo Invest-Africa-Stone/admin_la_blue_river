@@ -9,7 +9,8 @@ import {
   Account,
   Collaborators,
   Settings,
-  Projets
+  Projets,
+  Investors,
 } from '@pages';
   
 export const Navigations: React.FC = () => {
@@ -42,6 +43,10 @@ export const Navigations: React.FC = () => {
     {
       path: NavigationPathsEnum.SETTINGS,
       element: <Settings />,
+    },
+    {
+      path: NavigationPathsEnum.INVESTORS,
+      element: <Investors />,
     },
     
     {

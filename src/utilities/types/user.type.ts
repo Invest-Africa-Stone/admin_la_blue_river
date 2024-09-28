@@ -1,4 +1,5 @@
 export interface User {
+    _id?: string
     gender: string
     token: string
     firstname: string

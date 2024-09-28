@@ -5,6 +5,7 @@ export enum NavigationPathsEnum {
     ACCOUNT = '/my-account',
 
     COLLABS = '/collaborators',
+    INVESTORS = '/investors',
     PROJECTS = '/projects',
     SETTINGS = '/settings',
     NOT_FOUND = '*',

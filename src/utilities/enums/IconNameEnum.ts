@@ -9,6 +9,7 @@ import {
     faGears,
     faPaperPlane,
     faUsers,
+    faUsersGear,
     faWarning, 
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,12 +17,13 @@ export const IconNameEnum = {
     notif: faBell,
     mail: faEnvelope,
     dashboard: faChartSimple,
-    collabs: faUsers,
+    collabs: faUsersGear,
     settings: faGears, 
     infos: faCircleInfo,
     warning: faWarning,
     error: faCircleExclamation,
     check: faCheck,
     sentMessage: faPaperPlane,
-    project: faBus
+    project: faBus,
+    ivestors: faUsers,
 }

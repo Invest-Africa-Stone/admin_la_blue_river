@@ -1,40 +1,41 @@
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
 import { useControllers } from "./useControllers";
 import { DashboardWrapper } from "@components";
-import { NavigationPathsEnum, ProjectTypeEnum } from "@utilities/enums";
+import { NavigationPathsEnum, ProjectStateEnum, ProjectTypeEnum } from "@utilities/enums";
 import { CardProject } from "./components";
 import { Project } from "@utilities/types";
 
 const projectsData: Project[] = [
     {
-      _id: '1',
-      projectType: ProjectTypeEnum.VEHICLE,
-      ref: 'PRJ001',
-      name: 'Projet 1',
-      description: 'Description du projet 1',
-      adress: '123 Rue A',
-      city: 'Ville A',
-      country: 'Pays A',
-      images: [
-        { order: 0, filename: 'image1.jpg', fileDir: 'https://via.placeholder.com/300' },
-        { order: 1, filename: 'image1.jpg', fileDir: 'https://via.placeholder.com/300' },
-        { order: 2, filename: 'image1.jpg', fileDir: 'https://via.placeholder.com/300' },
-        { order: 3, filename: 'image1.jpg', fileDir: 'https://via.placeholder.com/300' },
-        { order: 4, filename: 'image2.jpg', fileDir: 'https://via.placeholder.com/300' },
-      ],
-      amount: {
-        acquisition: 10000,
-        fees: 500,
-        reserve: 1000,
-        ourRemuneration: 500,
-      },
-      stockValue: 100000,
-      rente: 5,
-      purchasePrice: 50000,
-      yearsOfOperations: 5,
-      totalNumberOfStock: 100,
-      numberOfStockRemaining: 50,
-      minimumStockPurchase: 10,
+        _id: '1',
+        projectType: ProjectTypeEnum.VEHICLE,
+        ref: 'PRJ001',
+        name: 'Projet 1',
+        description: 'Description du projet 1',
+        adress: '123 Rue A',
+        city: 'Ville A',
+        country: 'Pays A',
+        images: [
+            { order: 0, filename: 'image1.jpg', fileDir: 'https://osabus.fr/wp-content/uploads/2022/09/49-MAN-1024x768.jpeg' },
+            { order: 1, filename: 'image1.jpg', fileDir: 'https://www.ugap.fr/images/media-wp/page_presentation/4480267_transport_personnes_autocars_bus/4480267_prestation_transfere.jpg' },
+            { order: 2, filename: 'image1.jpg', fileDir: 'https://locationbus.be/wp-content/uploads/2022/01/location-autocar-bruxelles.jpg' },
+            { order: 3, filename: 'image1.jpg', fileDir: 'https://www.echoidf.fr/wp-content/uploads/2021/09/busautonome-grouperatp-hamdichref-17.jpg' },
+            { order: 4, filename: 'image2.jpg', fileDir: 'https://static8.depositphotos.com/1003854/1025/i/450/depositphotos_10259407-stock-photo-inside-of-new-bus.jpg' },
+        ],
+        amount: {
+            acquisition: 10000,
+            fees: 500,
+            reserve: 1000,
+            ourRemuneration: 500,
+        },
+        stockValue: 100000,
+        rente: 5,
+        purchasePrice: 50000,
+        yearsOfOperations: 5,
+        totalNumberOfStock: 100,
+        numberOfStockRemaining: 50,
+        minimumStockPurchase: 10,
+        state: ProjectStateEnum.NEW
     },
 ];
 
@@ -51,6 +52,8 @@ export const Projets:FC = ()=> {
         handleImageChange,
         handleSubmit,
     } = useControllers();
+
+    const [selectedState, setSelectedState] = useState<ProjectStateEnum | 'ALL'>('ALL');
 
     const renderAddNewProjectForm = useCallback(()=> {
         return (
@@ -316,11 +319,32 @@ export const Projets:FC = ()=> {
             currentPath={NavigationPathsEnum.PROJECTS}
             breadcrumbs={breadcrumbs}
         >
-            <>
+            <div className="container p-4 h-[80vh] overflow-y-auto bg-neutral rounded-lg">
                 {renderAddNewProjectForm()}
 
-                <CardProject project={projectsData[0]} />
-            </>
+                <div className="mb-4">
+                    <label className="label">Filtrer par état de projet :</label>
+                    <select
+                        value={selectedState}
+                        onChange={(e) => setSelectedState(e.target.value as ProjectStateEnum | 'ALL')}
+                        className="select select-bordered w-full"
+                    >
+                        <option value="ALL">Tous les projets</option>
+                        <option value={ProjectStateEnum.NEW}>{ProjectStateEnum.NEW}</option>
+                        <option value={ProjectStateEnum.FINANCING_IN_PROGRESS}>{ProjectStateEnum.FINANCING_IN_PROGRESS}</option>
+                        <option value={ProjectStateEnum.FUNDED}>{ProjectStateEnum.FUNDED}</option>
+                    </select>
+                </div>
+
+                <div className="grid grid-cols-4 gap-4 mt-10">
+                    <CardProject project={projectsData[0]} />
+                    <CardProject project={projectsData[0]} />
+                    <CardProject project={projectsData[0]} />
+                    <CardProject project={projectsData[0]} />
+                    <CardProject project={projectsData[0]} />
+                    <CardProject project={projectsData[0]} />
+                </div>
+            </div>
         </DashboardWrapper>
     )
 }

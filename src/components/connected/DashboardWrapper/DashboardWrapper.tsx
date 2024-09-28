@@ -28,7 +28,7 @@ export const DashboardWrapper:FC<Props> = ({
         return (
             <div className="navbar bg-base-200 rounded-box">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">Organisation Name</a>
+                    <a className="btn btn-ghost text-xl">La Blue River</a>
                 </div>
 
                 <div className="flex-none">
@@ -96,6 +96,11 @@ export const DashboardWrapper:FC<Props> = ({
                 icon: IconNameEnum.collabs,
                 label: 'Collaborateurs',
                 link: NavigationPathsEnum.COLLABS
+            },
+            {
+                icon: IconNameEnum.ivestors,
+                label: 'Investisseurs',
+                link: NavigationPathsEnum.INVESTORS
             },
             {
                 icon: IconNameEnum.settings,
